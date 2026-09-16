@@ -42,7 +42,7 @@ case "$OPTIMIZER" in
     grzo_lozo|grzo_lozo_strict|mezo_lozo)
         EXTRA="$EXTRA --lozo_rank ${LOZO_RANK:-8} --lozo_step_interval ${LOZO_STEP_INTERVAL:-50}" ;;
     grzo_quzo|mezo_quzo)
-        EXTRA="$EXTRA --quant_bits ${QUANT_BITS:-4}"
+        EXTRA="$EXTRA --quant_bits ${QUANT_BITS:-8}"
         [[ "${QUZO_WBITS:-0}" -gt 0 ]] && EXTRA="$EXTRA --quzo_weight_bits $QUZO_WBITS" ;;
     fzoo)
         EXTRA="$EXTRA --fzoo_n ${FZOO_N:-8}" ;;
