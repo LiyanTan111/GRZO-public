@@ -61,28 +61,12 @@ per-step time premium over MeZO. Right: fastest convergence in both steps and wa
 <sub>Training loss on Llama3-8B (RTE, MultiRC) and OPT-13B (SQuAD, DROP) against steps and
 wall-clock time: GRZO reaches any given loss level sooner on the clock.</sub>
 
-<p align="center"><img src="assets/table_main.png" width="100%" alt="Main results on Llama3-8B and OPT-13B"></p>
-<sub>Main results. Orange bullets mark first-order methods (full backpropagation memory);
-the best ZO number per task is in bold.</sub>
-
-<p align="center"><img src="assets/table_dropin.png" width="100%" alt="GRZO as a drop-in replacement inside sparse, low-rank and quantized ZO variants"></p>
-<sub>GRZO as a drop-in replacement for the MeZO core inside Sparse-MeZO, LOZO and QuZO
-(Llama3-8B). Each cell: accuracy, change vs. the paired baseline / change vs. vanilla GRZO.</sub>
-
 <p align="center"><img src="assets/grzo_combine_all.png" width="100%" alt="GRZO and its sparse, low-rank and quantized variants on SQuAD, DROP and BoolQ"></p>
-<sub>GRZO and its sparse, low-rank and quantized variants on Llama3-8B.</sub>
+<sub>GRZO and its sparse, low-rank and quantized variants (Sparse-, LO-, Qu-GRZO) on Llama3-8B.</sub>
 
 <p align="center"><img src="assets/boolq_x_grzo_compare.png" width="100%" alt="Each variant with the MeZO core versus the GRZO core on BoolQ"></p>
-<sub>Each variant with its original MeZO core versus the same variant with the GRZO core
-(Llama3-8B BoolQ).</sub>
-
-<p align="center">
-<img src="assets/per_step_breakdown.png" width="50%" alt="Per-step runtime breakdown of MeZO and GRZO">
-<img src="assets/memory_profile.png" width="48%" alt="Peak GPU memory per step of MeZO and GRZO">
-</p>
-<sub>Where the per-step premium comes from (Llama3-8B RTE, 4×A100-40GB): one hooked
-forward replaces MeZO's three full-parameter perturb / restore passes, and peak memory
-stays at the model footprint.</sub>
+<sub>Swapping GRZO in for the MeZO core: Sparse-MeZO vs. Sparse-GRZO, LOZO vs. LO-GRZO and
+QuZO vs. Qu-GRZO on Llama3-8B BoolQ.</sub>
 
 ## Code
 
