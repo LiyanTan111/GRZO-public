@@ -1,5 +1,10 @@
 # GRZO: Group-Relative Zeroth-Order Optimization
 
+Official implementation of
+**[GRZO: Group-Relative Zeroth-Order Optimization for Large Language Model Fine-Tuning](https://arxiv.org/abs/2606.02857)**
+(Findings of EMNLP 2026).
+Liyan Tan, Yequan Zhao, Yifan Yang, Ruijie Zhang, Xinling Yu, Zheng Zhang — University of California, Santa Barbara.
+
 Forward-only (zeroth-order) full-parameter fine-tuning of LLMs at inference-level memory.
 GRZO gives **every example in a batch its own perturbation**, evaluates all of them in a
 single batched forward pass through a flipout-style factorization, and aggregates the
@@ -61,7 +66,7 @@ and the optional safeguards `--adv_std_floor` / `--adv_clip`.
 ## Setup
 
 ```bash
-git clone <this repo> && cd GRZO
+git clone https://github.com/LiyanTan111/GRZO-public.git && cd GRZO-public
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -127,9 +132,11 @@ The baseline variants follow the official implementations of
 ## Citation
 
 ```bibtex
-@article{grzo2026,
-  title  = {GRZO: Group-Relative Zeroth-Order Optimization for LLM Fine-Tuning},
-  author = {},
-  year   = {2026}
+@inproceedings{tan2026grzo,
+  title     = {{GRZO}: Group-Relative Zeroth-Order Optimization for Large Language Model Fine-Tuning},
+  author    = {Tan, Liyan and Zhao, Yequan and Yang, Yifan and Zhang, Ruijie and Yu, Xinling and Zhang, Zheng},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
+  year      = {2026},
+  url       = {https://arxiv.org/abs/2606.02857}
 }
 ```
