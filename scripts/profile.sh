@@ -1,5 +1,5 @@
 #!/bin/bash
-# Reproduce the per-step wall-clock / peak-memory profile in profiling/REPORT.md.
+# Profile per-step wall-clock and peak GPU memory of each ZO optimizer.
 #
 # Each method runs a short training job on RTE (5 warm-up + 20 measured steps,
 # global batch 16, fp16). With GRZO_PROFILE_OUT set, the trainer times every
@@ -8,11 +8,11 @@
 #
 #   export MODEL_PATH=/path/to/Meta-Llama-3-8B
 #   bash scripts/profile.sh
-#   python scripts/summarize_profile.py profiling/new
+#   python scripts/summarize_profile.py profiling
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-OUT="${OUT:-$ROOT/profiling/new}"
+OUT="${OUT:-$ROOT/profiling}"
 METHODS="${METHODS:-mezo mezo_lozo mezo_sparse mezo_quzo fzoo flipout grzo_lozo_strict grzo_sparse grzo_quzo}"
 mkdir -p "$OUT"
 

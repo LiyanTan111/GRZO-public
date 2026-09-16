@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Summarize GRZO_PROFILE_OUT JSON files into a per-method table.
 
-    python scripts/summarize_profile.py profiling/time profiling/memory
+    python scripts/summarize_profile.py profiling
 
 Each directory holds ``<method>_rank<k>.json`` files written by the trainer:
 a list of ``{"name", "step", "t_ms"[, "peak_MB", "delta_MB"]}`` records, one
@@ -33,7 +33,7 @@ def summarize_dir(directory):
 
 
 def main():
-    dirs = sys.argv[1:] or ["profiling/time", "profiling/memory"]
+    dirs = sys.argv[1:] or ["profiling"]
     for d in dirs:
         rows = summarize_dir(d)
         if not rows:
