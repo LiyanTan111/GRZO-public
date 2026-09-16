@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+results/
+logs/
+wandb/
+profiling/new/
+profiling/breakdown/
+*.log
+MeZO/large_models/result/

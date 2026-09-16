@@ -1,0 +1,10 @@
+torch>=2.4
+transformers==4.46.3
+datasets>=2.14
+accelerate>=0.30
+huggingface-hub
+scikit-learn
+numpy
+tqdm
+# optional: only needed with REPORT_TO=wandb
+# wandb
