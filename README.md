@@ -58,15 +58,32 @@ small response matrix $R^{\top}\mathrm{diag}(a)S$ is all-reduced.
 per-step time premium over MeZO. Right: fastest convergence in both steps and wall-clock time.</sub>
 
 <p align="center"><img src="assets/all_tasks_loss.png" width="100%" alt="Training loss curves on four tasks against steps and wall-clock time"></p>
-<sub>Training loss on Llama3-8B (RTE, MultiRC) and OPT-13B (SQuAD, DROP) against steps and
-wall-clock time: GRZO reaches any given loss level sooner on the clock.</sub>
+<sub>Training loss on Llama3-8B (MultiRC, RTE) and OPT-13B (DROP, SQuAD), plotted against
+wall-clock time for the first and third panel and against training steps for the others.
+With a single shared perturbation, MeZO barely moves at this budget and drifts upward on
+DROP; FZOO, which spends several forward passes per step, descends steadily; GRZO descends
+fastest and ends lowest on both models and on both axes. The wall-clock panels already
+include GRZO's 23% per-step premium, so the extra directions per step more than pay for
+the extra time per step.</sub>
 
 <p align="center"><img src="assets/grzo_combine_all.png" width="100%" alt="GRZO and its sparse, low-rank and quantized variants on SQuAD, DROP and BoolQ"></p>
-<sub>GRZO and its sparse, low-rank and quantized variants (Sparse-, LO-, Qu-GRZO) on Llama3-8B.</sub>
+<sub>GRZO and its sparse, low-rank and quantized variants on Llama3-8B. Sparse-GRZO perturbs
+only the smallest 25% of each weight matrix, LO-GRZO replaces the base noise by a rank-8
+factor, and Qu-GRZO rounds the noise to int8; all three keep the per-example estimator and
+the group-relative normalization. None of the efficiency mechanisms slows convergence: on
+SQuAD and DROP the variants reach a lower loss than vanilla GRZO from the first few
+thousand steps, and on BoolQ all four curves track each other before Sparse-GRZO and
+LO-GRZO pull ahead late in training.</sub>
 
 <p align="center"><img src="assets/boolq_x_grzo_compare.png" width="100%" alt="Each variant with the MeZO core versus the GRZO core on BoolQ"></p>
-<sub>Swapping GRZO in for the MeZO core: Sparse-MeZO vs. Sparse-GRZO, LOZO vs. LO-GRZO and
-QuZO vs. Qu-GRZO on Llama3-8B BoolQ.</sub>
+<sub>The same three variants with their original MeZO core (gray) and with the GRZO core
+swapped in, on Llama3-8B BoolQ; vanilla GRZO (blue) is shown for reference. Sparse-MeZO
+and QuZO stay flat near their starting loss for the whole run, while Sparse-GRZO and
+Qu-GRZO follow the vanilla GRZO curve down to about 0.45. LOZO already descends on its
+own, and LO-GRZO still ends below both LOZO and vanilla GRZO. The variance reduction from
+per-example perturbations therefore carries over unchanged to sparse, low-rank and
+quantized perturbations, which is what makes GRZO a drop-in replacement for the MeZO
+core.</sub>
 
 ## Code
 
